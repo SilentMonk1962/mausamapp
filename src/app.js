@@ -1,6 +1,6 @@
 const express=require('express');
 const app=express();
-const PORT= 3000;
+const PORT= process.env.PORT ||3000;
 const path =require('path');
 const hbs=require('hbs');
 const geocode=require('./utils/geocode');
@@ -89,4 +89,4 @@ app.get('*',(req,res)=>{
     });
 });
 
-app.listen(PORT,()=>console.log(`Connected @${PORT}`))
+app.listen(port,()=>console.log(`Connected @${PORT}`))
