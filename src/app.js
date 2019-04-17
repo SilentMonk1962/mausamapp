@@ -48,7 +48,7 @@ app.get('/weather',(req,res)=>{
     }
         //we had to use an empty object for cases where user might add random words. 
         //if there is an empty object to relly apon then our app will set value of lat and long and location to null and still run the prog instead of crashing.
-        geocode(req.query.addres, (error, { latitude, longitude, location } = {}) => {
+        geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
             if(error){
                 return res.send({error});
             }
@@ -89,4 +89,4 @@ app.get('*',(req,res)=>{
     });
 });
 
-app.listen(port,()=>console.log(`Connected @${PORT}`))
+app.listen(port,()=>console.log(`Connected @${port}`))
