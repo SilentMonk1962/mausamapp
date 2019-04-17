@@ -10,7 +10,10 @@ const forecast=(lat,long,callback)=>{
                 callback("Unable to find Location",undefined);
             }
             else
-            callback(undefined,body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degress out. There is a ' + body.currently.precipProbability + '% chance of rain.')
+            temperatureInDegrees=(((Number(body.currently.temperature))-32)*5/9).toFixed(2);
+            temperatureInDegreesDayHigh=(((Number(body.daily.data[0].temperatureHigh))-32)*5/9).toFixed(2);
+            temperatureInDegreesDayLow=(((Number(body.daily.data[0].temperatureLow))-32)*5/9).toFixed(2);
+            callback(undefined,body.daily.data[0].summary + ' It is currently ' + temperatureInDegrees + ' °C out. There is a ' + body.currently.precipProbability + '% chance of rain. To state further, day recorded highest temp at '+temperatureInDegreesDayHigh+' °C and lowest at '+temperatureInDegreesDayLow+ ' °C.')
         })
     }
     module.exports=forecast;
